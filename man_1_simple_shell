@@ -1,0 +1,86 @@
+.TH HSH 1 "22 February 2026" "Simple Shell Project" GNU "Shell man page"
+
+.SH NAME
+.B hsh
+\- small command line shell
+
+.SH SYNOPSIS
+Run the program with:
+.br
+./hsh
+.br
+After starting, the shell waits for user commands.
+
+.SH DESCRIPTION
+hsh is a small Unix-like shell created for learning purposes.
+.br
+It reads commands from the user, interprets them and executes
+programs available on the system.
+
+.br
+The shell supports:
+.br
+- execution of programs with arguments
+.br
+- built-in commands
+.br
+- command chaining using ;
+.br
+- logical operators && and ||
+.br
+- pipe operations
+.br
+- environment variable usage
+.br
+- special variables such as $? and $$
+
+.SH BUILTINS
+The shell provides several built-in commands:
+.br
+exit    terminate the shell
+.br
+cd      change the current directory
+.br
+env     display environment variables
+.br
+help    show help information
+.br
+history show previously used commands
+.br
+alias   create command aliases
+
+.SH OPTIONS
+Currently this shell does not accept command line options.
+
+.SH EXIT STATUS
+Every command returns a status code.
+.br
+0 indicates success.
+.br
+Any other value indicates an error.
+
+.SH ENVIRONMENT
+The shell works with standard environment variables including:
+.br
+PATH
+.br
+$?
+.br
+$$
+
+.SH EXAMPLES
+Interactive mode:
+.br
+$ ./hsh
+.br
+$ ls
+.br
+$ exit
+
+.br
+Non-interactive mode:
+.br
+$ echo "ls" | ./hsh
+
+.SH AUTHORS
+Ziya Safaraliyev
