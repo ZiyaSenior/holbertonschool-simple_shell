@@ -1,86 +1,13 @@
-.TH HSH 1 "22 February 2026" "Simple Shell Project" GNU "Shell man page"
+# OBJECTIVES
 
-.SH NAME
-.B hsh
-\- small command line shell
+- Memory management to avoid memory leaks.
+- Apply the Betty style for consistent code formatting.
+- Develop a basic shell program following specific requirements and guidelines.
 
-.SH SYNOPSIS
-Run the program with:
-.br
-./hsh
-.br
-After starting, the shell waits for user commands.
+# REQUIREMENTS
 
-.SH DESCRIPTION
-hsh is a small Unix-like shell created for learning purposes.
-.br
-It reads commands from the user, interprets them and executes
-programs available on the system.
-
-.br
-The shell supports:
-.br
-- execution of programs with arguments
-.br
-- built-in commands
-.br
-- command chaining using ;
-.br
-- logical operators && and ||
-.br
-- pipe operations
-.br
-- environment variable usage
-.br
-- special variables such as $? and $$
-
-.SH BUILTINS
-The shell provides several built-in commands:
-.br
-exit    terminate the shell
-.br
-cd      change the current directory
-.br
-env     display environment variables
-.br
-help    show help information
-.br
-history show previously used commands
-.br
-alias   create command aliases
-
-.SH OPTIONS
-Currently this shell does not accept command line options.
-
-.SH EXIT STATUS
-Every command returns a status code.
-.br
-0 indicates success.
-.br
-Any other value indicates an error.
-
-.SH ENVIRONMENT
-The shell works with standard environment variables including:
-.br
-PATH
-.br
-$?
-.br
-$$
-
-.SH EXAMPLES
-Interactive mode:
-.br
-$ ./hsh
-.br
-$ ls
-.br
-$ exit
-
-.br
-Non-interactive mode:
-.br
-$ echo "ls" | ./hsh
-
-.SH AUTHORS
-Ziya Safaraliyev
+- All files adhere to the Betty style guidelines and pass checks using betty *.c.
+- Source code files should use the provided flags `-Wall -Werror -Wextra -pedantic -std=gnu89` during compilation.
+- All header files should be include guarded to prevent multiple inclusions.
+- No more than 40 lines of code per function.
+- The program should produce the same output and error messages as `/bin/sh`.
