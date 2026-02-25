@@ -5,12 +5,15 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <string.h>
-#include <sys/types.h>
 #include <sys/wait.h>
 
-void shell_loop(void);
-char *read_line(void);
-char **split_line(char *line);
-int execute(char **args);
+extern char **environ;
+
+char *find_command(char *command);
+void builtin_env(void);
+int exec_command(char **argv, char *cmd_path);
+int parse_line(char *line, char **argv);
+int handle_builtins(char **argv, int *status, char *line);
+void run_command(char **argv, int *status);
 
 #endif
