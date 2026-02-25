@@ -1,35 +1,35 @@
 #include "shell.h"
 
 /**
- * execute - Executes a command.
- * @args: The command arguments.
+ * exec_command - fork and execute a command
+ * @argv: argument vector
+ * @cmd_path: full path to the command
  *
- * Return: 1 to continue, 0 to exit.
+ * Return: exit status of the child
  */
-int execute(char **args)
+int exec_command(char **argv, char *cmd_path)
 {
 	pid_t pid;
 	int status;
 
-	if (args[0] == NULL)
-		return (1);
-	if (strcmp(args[0], "exit") == 0)
-		return (0);
-
 	pid = fork();
-	if (pid == 0)
-	{
-		if (execvp(args[0], args) == -1)
-			perror("execvp");
-		exit(EXIT_FAILURE);
-	}
-	else if (pid < 0)
+	if (pid == -1)
 	{
 		perror("fork");
+		return (1);
 	}
-	else
+
+	if (pid == 0)
 	{
-		waitpid(pid, &status, 0);
+		if (execve(cmd_path, argv, environ) == -1)
+		{
+			perror("execve");
+			exit(1);
+		}
 	}
+
+	waitpid(pid, &status, 0);
+	if (WIFEXITED(status))
+		return (WEXITSTATUS(status));
 	return (1);
 }
